@@ -1,4 +1,3 @@
-// src/lib/data/products.ts
 export const products = [
     {
       id: '1',
@@ -24,5 +23,13 @@ export const products = [
       image: '/images/tailwind-hoodie.jpg',
       category: 'Ropa',
     },
+    {
+        id: '4',
+        title: 'Sudadera Tailwind',
+        price: 39.99,
+        description: 'Sudadera con capucha y logo TailwindCSS',
+        image: '/images/tailwind-hoodie.jpg',
+        category: 'Electrónicos',
+      },
   ];
   

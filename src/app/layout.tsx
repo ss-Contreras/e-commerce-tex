@@ -1,10 +1,9 @@
-// src/app/layout.tsx
 import './globals.css';
 import { ReactNode } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 // import { Providers } from './providers';
-import { ClientLayoutWrapper } from '@/components/client-layout-wrapper';
+import { ClientLayoutWrapper } from '@/components/Client-layout-wrapper';
 
 export const metadata = {
   title: 'Mi E-Commerce',

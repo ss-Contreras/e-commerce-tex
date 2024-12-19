@@ -1,6 +1,9 @@
+// src/components/header.tsx
+'use client';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ShoppingCart } from 'lucide-react';
+import { CartSheet } from './Cart-sheet';
 
 export function Header() {
   return (
@@ -13,11 +16,8 @@ export function Header() {
           <Link href="/products">
             <Button variant="ghost">Productos</Button>
           </Link>
-          <Link href="/cart">
-            <Button variant="ghost">
-              <ShoppingCart className="h-5 w-5" />
-            </Button>
-          </Link>
+          {/* Aquí reemplazamos el link al carrito por el CartSheet */}
+          <CartSheet />
         </nav>
       </div>
     </header>
