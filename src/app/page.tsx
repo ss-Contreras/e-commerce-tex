@@ -28,7 +28,7 @@ export default function HomePage() {
       {/* Categorías Destacadas */}
       <section>
         <h2 className="text-2xl font-bold mb-6">Explora por Categorías</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           <Link href="/products?category=Ropa" className="relative block h-40 rounded-md overflow-hidden group">
             <Image src="/images/category/clothing.jpg" alt="Ropa" fill className="object-cover group-hover:scale-110 transition-transform" />
             <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
@@ -53,7 +53,7 @@ export default function HomePage() {
       {/* Beneficios adicionales */}
       <section>
         <h2 className="text-2xl font-bold mb-6">Nuestros Beneficios</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           <div className="flex flex-col items-center text-center p-6 rounded-md">
             <Image src="/images/icon/free-shipping.png" alt="Envío Gratis" width={60} height={60} className="mb-4" />
             <h3 className="font-semibold">Envío Gratis</h3>

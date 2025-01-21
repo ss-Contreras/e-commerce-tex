@@ -1,7 +1,8 @@
-import './globals.css';
+import './globals.css'; 
 import { ReactNode } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { inter } from '@/config/fonts'
 // import { Providers } from './providers';
 import { ClientLayoutWrapper } from '@/components/Client-layout-wrapper';
 
@@ -13,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="es">
-      <body className="min-h-screen bg-white text-gray-900">
+      <body className={`${inter.className} ${inter.className} antialiased`}>
         {/* <Providers> */}
           <Header />
           <ClientLayoutWrapper>

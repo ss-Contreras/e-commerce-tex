@@ -31,5 +31,13 @@ export const products = [
         image: '/images/tailwind-hoodie.jpg',
         category: 'Electrónicos',
       },
+      {
+        id: '5',
+        title: 'Sudadera Tailwind',
+        price: 39.99,
+        description: 'Sudadera con capucha y logo TailwindCSS',
+        image: '/images/tailwind-hoodie.jpg',
+        category: 'Electrónicos',
+      },
   ];
   
