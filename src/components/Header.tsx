@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { CartSheet } from './Cart-sheet';
 import UserAccount from './User-account';
 import { MapPin, Search } from 'lucide-react';
+import Image from 'next/image';
 
 export function Header() {
   const [scrollingDown, setScrollingDown] = useState(false);
@@ -26,7 +27,7 @@ export function Header() {
 
         setScrollingDown(false);
         if (currentScrollY <= 80) {
-          setHeader2Fixed(false); 
+          setHeader2Fixed(false);
         }
       }
 
@@ -41,14 +42,21 @@ export function Header() {
     <div className="relative">
       {/* Header principal*/}
       <header
-        className={`w-full border-b border-gray-200 bg-white/80 backdrop-blur-lg shadow-sm transition-all duration-300 ease-in-out ${
-          scrollingDown ? '-translate-y-24' : 'translate-y-0'
-        }`}
+        className={`w-full border-b border-gray-200 bg-white/80 backdrop-blur-lg shadow-sm transition-all duration-300 ease-in-out ${scrollingDown ? '-translate-y-24' : 'translate-y-0'
+          }`}
         style={{ zIndex: 10 }}
       >
         <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
           <Link href="/">
-            <span className="text-xl font-bold">TEX</span>
+            <Image
+              src="/images/logo.png"
+              alt="Hero"
+              width={80}
+              height={80}
+              className="object-cover"
+            />
+
+            {/* <span className="text-xl font-bold">TEX</span> */}
           </Link>
 
           {/* Input de búsqueda */}
@@ -109,9 +117,8 @@ export function Header() {
 
       {/* Subheader de Categorías que se fija en la parte superior cuando hace scroll hacia abajo */}
       <div
-        className={`w-full bg-gray-100 border-b border-gray-200 transition-all duration-300 ease-in-out ${
-          header2Fixed ? 'fixed top-0 left-0 right-0' : 'relative'
-        }`}
+        className={`w-full bg-gray-100 border-b border-gray-200 transition-all duration-300 ease-in-out ${header2Fixed ? 'fixed top-0 left-0 right-0' : 'relative'
+          }`}
         style={{ zIndex: 5 }}
       >
         <div className="mx-auto max-w-7xl px-4 py-2 flex items-center justify-between">
