@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/avatar"
 
 import { User } from "lucide-react";
+import Link from "next/link";
 
 export default function UserAccount() {
   return (
@@ -42,11 +43,15 @@ export default function UserAccount() {
         <DropdownMenuItem onSelect={() => console.log("View Profile")}>
           View Profile
         </DropdownMenuItem>
-        <DropdownMenuItem onSelect={() => console.log("Sign In")}>
-          Sign In
+        <DropdownMenuItem onSelect={() => console.log("View Profile")}>
+          <Link href='/auth/login'>
+            Sign In
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuItem onSelect={() => console.log("Register")}>
-          Register
+          <Link href='/auth/register'>
+            Register
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onSelect={() => console.log("Log Out")}>
