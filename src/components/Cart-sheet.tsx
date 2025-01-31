@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetClose } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
+import Link from 'next/link';
 
 export function CartSheet() {
   const [open, setOpen] = useState(false);
@@ -54,7 +55,13 @@ export function CartSheet() {
             </div>
           )}
           {cartItems.length > 0 && (
-            <Button className="w-full mt-4">Proceder al Pago</Button>
+            <SheetClose asChild>
+            <Link
+              href='./cart'
+            >
+              <Button className="w-full mt-4">Proceder al Pago</Button>
+            </Link>
+            </SheetClose>
           )}
         </div>
         

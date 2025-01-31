@@ -9,77 +9,132 @@ export default function HomePage() {
   return (
     <div className="space-y-16">
       {/* Hero Section */}
-      <section className="relative w-full h-80 rounded-lg overflow-hidden">
+      <section className="relative w-full h-[80vh] rounded-lg overflow-hidden group">
         <Image
           src="/images/hero-banner.jpg"
-          alt="Hero"
+          alt="Moda y tecnología a un click"
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-1000 group-hover:scale-105"
+          priority
         />
-        <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-start p-8">
-          <h1 className="text-3xl font-bold text-white">Bienvenido a TEX</h1>
-          <p className="text-white mt-2">Encuentra los mejores productos en un solo lugar</p>
-          <Link href="/products">
-            <Button className="mt-4 bg-white text-black">Ver Productos</Button>
-          </Link>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex flex-col justify-center items-start p-8 lg:p-16 space-y-4">
+          <h1 className="text-4xl lg:text-6xl font-bold text-white drop-shadow-2xl">
+            Descubre el futuro de <span className="text-primary">TEX</span>
+          </h1>
+          <p className="text-lg lg:text-xl text-white/90 max-w-2xl">
+            Colección exclusiva 2024 - Envío express en 24h 🚚
+          </p>
+          <div className="flex gap-4 mt-6">
+            <Link href="/products">
+              <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-full shadow-lg transition-all hover:scale-105">
+                Comprar Ahora
+              </Button>
+            </Link>
+            <Link href="/sale">
+              <Button variant="outline" className="bg-white/10 backdrop-blur-sm text-white px-8 py-6 text-lg rounded-full border-white/20 hover:bg-white/20">
+                Ofertas Flash
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Categorías Destacadas */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6">Explora por Categorías</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <Link href="/products?category=Ropa" className="relative block h-40 rounded-md overflow-hidden group">
-            <Image src="/images/category/clothing.jpg" alt="Ropa" fill className="object-cover group-hover:scale-110 transition-transform" />
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-              <span className="text-white font-semibold text-lg">Ropa</span>
-            </div>
-          </Link>
-          <Link href="/products?category=Accesorios" className="relative block h-40 rounded-md overflow-hidden group">
-            <Image src="/images/category/accessories.jpg" alt="Accesorios" fill className="object-cover group-hover:scale-110 transition-transform" />
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-              <span className="text-white font-semibold text-lg">Accesorios</span>
-            </div>
-          </Link>
-          <Link href="/products?category=Electrónicos" className="relative block h-40 rounded-md overflow-hidden group">
-            <Image src="/images/category/electronics.jpg" alt="Electrónicos" fill className="object-cover group-hover:scale-110 transition-transform" />
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-              <span className="text-white font-semibold text-lg">Electrónicos</span>
-            </div>
-          </Link>
+      <section className="container px-4 mx-auto">
+        <h2 className="text-3xl font-bold mb-8 text-center">Categorias</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {['Ropa', 'Accesorios', 'Electrónicos', 'Novedades'].map((category, index) => (
+            <Link
+              key={category}
+              href={`/products?category=${category}`}
+              className="relative block h-64 rounded-xl overflow-hidden group transition-transform hover:-translate-y-2"
+            >
+              <Image
+                src={`/images/category/${category.toLowerCase()}.jpg`}
+                alt={category}
+                fill
+                className="object-cover transition-all duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
+                <span className="text-white font-bold text-xl tracking-wide">
+                  {category}
+                  <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    →
+                  </span>
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
-      {/* Beneficios adicionales */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6">Nuestros Beneficios</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          <div className="flex flex-col items-center text-center p-6 rounded-md">
-            <Image src="/images/icon/free-shipping.png" alt="Envío Gratis" width={60} height={60} className="mb-4" />
-            <h3 className="font-semibold">Envío Gratis</h3>
-            <p className="text-gray-600">Envía tus productos sin costo adicional.</p>
-          </div>
-          <div className="flex flex-col items-center text-center p-6 rounded-md">
-            <Image src="/images/icon/24-7-support.png" alt="Soporte 24/7" width={60} height={60} className="mb-4"/>
-            <h3 className="font-semibold">Soporte 24/7</h3>
-            <p className="text-gray-600">Atención al cliente día y noche.</p>
-          </div>
-          <div className="flex flex-col items-center text-center p-6 rounded-md">
-            <Image src="/images/icon/easy-returns.png" alt="Devoluciones Fáciles" width={60} height={60} className="mb-4"/>
-            <h3 className="font-semibold">Devoluciones Fáciles</h3>
-            <p className="text-gray-600">Proceso de devolución sencillo y sin complicaciones.</p>
+      {/* Beneficios Premium*/}
+      <section className="bg-gradient-to-br from-gray-50 to-white py-16">
+        <div className="container px-4 mx-auto">
+          {/* <h2 className="text-3xl font-bold mb-12 text-center">Ventajas TEX</h2> */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { 
+                icon: '/images/icon/free-shipping.png',
+                title: 'Envío Relámpago',
+                text: 'Recibe tu pedido en menos de 48h'
+              },
+              {
+                icon: '/images/icon/24-7-support.png',
+                title: 'Compra Segura',
+                text: 'Protegemos tus datos 24/7'
+              },
+              {
+                icon: '/images/icon/discount.png',
+                title: 'Club de Beneficios',
+                text: 'Descuentos exclusivos cada mes'
+              }
+            ].map((benefit, index) => (
+              <div 
+                key={benefit.title}
+                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+              >
+                <div className="bg-primary/10 w-fit p-4 rounded-xl mb-4">
+                  <Image 
+                    src={benefit.icon}
+                    alt={benefit.title}
+                    width={40}
+                    height={40}
+                    className="h-10 w-10"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
+                <p className="text-gray-600">{benefit.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Productos Destacados */}
-      <section>
-        <h2 className="text-2xl font-bold mb-4">Destacados</h2>
-        <ProductGrid products={products.slice(0, 36)} />
-        <div className="text-center mt-6">
-          <Link href="/products">
-            <Button variant="outline">Ver Todos</Button>
+      {/* Productos Destacados - Versión Mejorada */}
+      <section className="container px-4 mx-auto">
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-3xl font-bold">Lo Más Vendido</h2>
+          <Link href="/products" className="text-primary hover:text-primary/80 font-semibold flex items-center gap-2">
+            Ver Colección Completa
+            <span className="text-lg">→</span>
           </Link>
+        </div>
+        <ProductGrid products={products.slice(0, 8)} />
+      </section>
+
+      {/* Banner de Oferta - Nuevo Componente */}
+      <section className="bg-primary/90 text-white py-12">
+        <div className="container px-4 mx-auto text-center">
+          <h3 className="text-4xl font-bold mb-4">Black Friday Anticipado</h3>
+          <p className="text-xl mb-6">Hasta 70% de descuento en seleccionados</p>
+          <div className="flex justify-center gap-4">
+            <Link href="/sale">
+              <Button variant="secondary" className="px-8 py-6 text-lg rounded-full">
+                Ver Ofertas
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>
