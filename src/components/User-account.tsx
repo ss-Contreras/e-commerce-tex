@@ -41,7 +41,9 @@ export default function UserAccount() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem onSelect={() => console.log("View Profile")}>
-          View Profile
+          <Link href='/account/profile'>
+            View Profile
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuItem onSelect={() => console.log("View Profile")}>
           <Link href='/auth/login'>

@@ -57,7 +57,7 @@ export function CartSheet() {
           {cartItems.length > 0 && (
             <SheetClose asChild>
             <Link
-              href='./cart'
+              href='/cart'
             >
               <Button className="w-full mt-4">Proceder al Pago</Button>
             </Link>

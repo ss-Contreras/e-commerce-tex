@@ -1,9 +1,7 @@
-import './globals.css'; 
+// app/layout.tsx
+import './globals.css';
 import { ReactNode } from 'react';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { inter } from '@/config/fonts'
-// import { Providers } from './providers';
+import { inter } from '@/config/fonts';
 import { ClientLayoutWrapper } from '@/components/Client-layout-wrapper';
 
 export const metadata = {
@@ -15,13 +13,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="es">
       <body className={`${inter.className} ${inter.className} antialiased`}>
-        {/* <Providers> */}
-          <Header />
-          <ClientLayoutWrapper>
-            {children}
-          </ClientLayoutWrapper>
-          <Footer />
-        {/* </Providers> */}
+          {children}
       </body>
     </html>
   );

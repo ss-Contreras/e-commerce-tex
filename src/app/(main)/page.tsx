@@ -9,9 +9,9 @@ export default function HomePage() {
   return (
     <div className="space-y-16">
       {/* Hero Section */}
-      <section className="relative w-full h-[80vh] rounded-lg overflow-hidden group">
+      <section className="relative w-full h-[65vh] rounded-lg overflow-hidden group">
         <Image
-          src="/images/hero-banner.jpg"
+          src="/images/banner.jpg"
           alt="Moda y tecnología a un click"
           fill
           className="object-cover transition-transform duration-1000 group-hover:scale-105"
@@ -19,7 +19,7 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex flex-col justify-center items-start p-8 lg:p-16 space-y-4">
           <h1 className="text-4xl lg:text-6xl font-bold text-white drop-shadow-2xl">
-            Descubre el futuro de <span className="text-primary">TEX</span>
+            Descubre el futuro de <span className="text-secondary">TEX</span>
           </h1>
           <p className="text-lg lg:text-xl text-white/90 max-w-2xl">
             Colección exclusiva 2024 - Envío express en 24h 🚚

@@ -48,15 +48,14 @@ export function Header() {
       >
         <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
           <Link href="/">
-            <Image
+            {/* <Image
               src="/images/logo.png"
               alt="Hero"
               width={80}
               height={80}
               className="object-cover"
-            />
-
-            {/* <span className="text-xl font-bold">TEX</span> */}
+            /> */}
+            <span className="text-xl font-bold">TEX</span>
           </Link>
 
           {/* Input de búsqueda */}
@@ -103,14 +102,16 @@ export function Header() {
           </div>
 
           <nav className="flex items-center gap-4">
-            <Link href="/products">
+            {/* <Link href="/products">
               <Button variant="ghost">Productos</Button>
             </Link>
             <Link href="/category">
               <Button variant="ghost">Categorías</Button>
-            </Link>
+            </Link> */}
+
             <UserAccount />
             <CartSheet />
+            
           </nav>
         </div>
       </header>
