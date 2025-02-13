@@ -27,7 +27,7 @@ export function ClientLayoutWrapper({ children }: ClientLayoutWrapperProps) {
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="min-h-[calc(100vh-140px)]">{children}</div>;
+        <div className="min-h-[calc(100vh-140px)]">{children}</div>
       </motion.main>
     </AnimatePresence>
   );

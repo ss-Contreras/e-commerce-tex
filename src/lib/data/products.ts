@@ -1,6 +1,7 @@
 export const products = [
   {
     id: '1',
+    name: 'Camiseta React',
     title: 'Camiseta React',
     price: 25.99,
     description: 'Camiseta 100% algodón con logo de React',
@@ -12,6 +13,7 @@ export const products = [
   },
   {
     id: '2',
+    name: 'Gorra Next',
     title: 'Gorra Next.js',
     price: 19.99,
     description: 'Gorra negra con bordado Next.js en el frente',
@@ -23,6 +25,7 @@ export const products = [
   },
   {
     id: '3',
+    name: 'Sudadera Tailwind',
     title: 'Sudadera Tailwind',
     price: 39.99,
     description: 'Sudadera con capucha y logo TailwindCSS',

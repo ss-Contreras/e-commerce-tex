@@ -1,5 +1,5 @@
 // components/ProductCard.tsx
-import { Product } from '@/utils/types';
+import { Product } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card';
@@ -38,11 +38,11 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
       </CardContent>
       <CardFooter className="p-4 pt-0 flex justify-between">
-        {/* <Link href={`/products/${product.id}`}>
+        <Link href={`/products/${product.id}`}>
           <Button variant="outline" className="rounded-full">
             Ver Detalles
           </Button>
-        </Link> */}
+        </Link>
         <Button className="rounded-full gap-2">
           <ShoppingCart className="w-4 h-4" />
           Comprar

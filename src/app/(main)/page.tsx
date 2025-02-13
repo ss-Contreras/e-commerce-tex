@@ -1,9 +1,10 @@
 // src/app/page.tsx
 import Image from 'next/image';
 import Link from 'next/link';
-import { products } from '@/lib/data/products';
-import { ProductGrid } from '@/components/Product-grid';
+// import { products } from '@/lib/data/products';
+// import { ProductGrid } from '@/components/Product-grid';
 import { Button } from '@/components/ui/button';
+import ProductList from '@/components/Product-list';
 
 export default function HomePage() {
   return (
@@ -120,7 +121,8 @@ export default function HomePage() {
             <span className="text-lg">→</span>
           </Link>
         </div>
-        <ProductGrid products={products.slice(0, 8)} />
+        <ProductList />
+        {/* <ProductGrid products={products.slice(0, 8)} /> */}
       </section>
 
       {/* Banner de Oferta - Nuevo Componente */}
@@ -138,5 +140,5 @@ export default function HomePage() {
         </div>
       </section>
     </div>
-  );
+  )
 }

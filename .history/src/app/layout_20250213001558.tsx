@@ -2,7 +2,8 @@
 import './globals.css';
 import { ReactNode } from 'react';
 import { inter } from '@/config/fonts';
-import Providers from './providers';
+import store from '../store/store';
+import { Provider } from 'react-redux'
 // import { ClientLayoutWrapper } from '@/components/Client-layout-wrapper';
 // import { GlobalStateProvider } from '@/store/globalState';
 
@@ -16,9 +17,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="es">
       <body className={`${inter.className} antialiased`}>
         {/* <GlobalStateProvider> */}
-        <Providers>
+        <Provider store={store}>
           {children}
-        </Providers>
+        </Provider>
         {/* </GlobalStateProvider> */}
       </body>
     </html>
