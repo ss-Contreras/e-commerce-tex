@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategorias, deleteCategoria } from '@/store/slices/categoriaSlice';
 import { RootState, AppDispatch } from '@/store/store';
 import { Button } from '@/components/ui/button';
-import { Pencil, Trash } from 'lucide-react';
+import { Trash } from 'lucide-react';
 
 export default function ProductsPage() {
 
@@ -20,16 +20,10 @@ export default function ProductsPage() {
     if (status === 'failed') return <p>Error: {error}</p>;
 
   return (
-    <div className="p-6">
-      {/* Encabezado */}
+    <div>
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">Categorias</h1>
-        <Button 
-        variant="default" 
-        // onClick={handleAddPedido}
-        >
-          Añadir Pedido
-        </Button>
+        <button className="bg-blue-600 text-white px-4 py-2 rounded">Añadir Categoria</button>
       </div>
       <div className="bg-white shadow-md rounded-lg overflow-hidden">
         <table className="min-w-full divide-y divide-gray-200 text-sm">
@@ -48,15 +42,7 @@ export default function ProductsPage() {
                 <td className="px-6 py-4 whitespace-nowrap">{cat.name}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{cat.description}</td>
                 <td className="px-6 py-4 whitespace-nowrap space-x-2">
-                <Button
-                      variant="ghost"
-                      size="icon"
-                      // onClick={() => handleEditPedido(pedido)}
-                      aria-label="Editar"
-                      className="bg-blue-600 text-white hover:bg-blue-700"
-                    >
-                      <Pencil className="w-4 h-4" />
-                    </Button>
+                  <button className="text-blue-600">Editar</button>
                   <Button
                       variant="destructive"
                       size="icon"

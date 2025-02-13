@@ -1,3 +1,5 @@
+'use client'
+
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchCategorias, deleteCategoria } from "../store/slices/categoriaSlice";
@@ -20,7 +22,7 @@ const CategoryList = () => {
       <ul>
         {list.map((categoria) => (
           <li key={categoria.id}>
-            {categoria.nombre} - {categoria.descripcion}
+            {categoria.name} - {categoria.description}
             <button onClick={() => dispatch(deleteCategoria(categoria.id))}>Eliminar</button>
           </li>
         ))}

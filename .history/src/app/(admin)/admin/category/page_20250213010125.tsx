@@ -20,16 +20,10 @@ export default function ProductsPage() {
     if (status === 'failed') return <p>Error: {error}</p>;
 
   return (
-    <div className="p-6">
-      {/* Encabezado */}
+    <div>
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">Categorias</h1>
-        <Button 
-        variant="default" 
-        // onClick={handleAddPedido}
-        >
-          Añadir Pedido
-        </Button>
+        <button className="bg-blue-600 text-white px-4 py-2 rounded">Añadir Categoria</button>
       </div>
       <div className="bg-white shadow-md rounded-lg overflow-hidden">
         <table className="min-w-full divide-y divide-gray-200 text-sm">

@@ -23,7 +23,7 @@ export default function ProductsPage() {
     <div className="p-6">
       {/* Encabezado */}
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold">Categorias</h1>
+        <h1 className="text-2xl font-bold">Pedidos</h1>
         <Button 
         variant="default" 
         // onClick={handleAddPedido}
