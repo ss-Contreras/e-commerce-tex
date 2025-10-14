@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -16,10 +17,6 @@ import {
 } from "lucide-react"
 
 type Currency = "USD" | "COP"
-
-// -----------------------------
-// Helper Components
-// -----------------------------
 
 function Logo() {
   return (
@@ -40,7 +37,6 @@ function GradientText({ children }: { children: React.ReactNode }) {
 // -----------------------------
 // Navbar
 // -----------------------------
-
 export function Navbar({ onStart }: { onStart?: () => void }) {
   return (
     <nav className="fixed w-full top-0 left-0 z-40 backdrop-blur-sm bg-white/60 dark:bg-black/60 border-b border-slate-200 dark:border-slate-800">
@@ -48,25 +44,15 @@ export function Navbar({ onStart }: { onStart?: () => void }) {
         <div className="flex items-center gap-8">
           <Logo />
           <div className="hidden md:flex gap-6 text-sm text-slate-700 dark:text-slate-200">
-            <a href="#inicio" className="hover:underline">
-              Inicio
-            </a>
-            <a href="#features" className="hover:underline">
-              Funcionalidades
-            </a>
-            <a href="#planes" className="hover:underline">
-              Planes
-            </a>
-            <a href="#acceder" className="hover:underline">
-              Acceder
-            </a>
+            <a href="#inicio" className="hover:underline">Inicio</a>
+            <a href="#features" className="hover:underline">Funcionalidades</a>
+            <a href="#planes" className="hover:underline">Planes</a>
+            <a href="#acceder" className="hover:underline">Acceder</a>
           </div>
         </div>
 
         <div className="flex items-center gap-4">
-          <Button variant="link" size="sm">
-            Acceder
-          </Button>
+          <Button variant="link" size="sm">Acceder</Button>
           <Button
             onClick={onStart}
             className="rounded-2xl bg-gradient-to-r from-blue-600 to-violet-600 text-white shadow-md"
@@ -80,9 +66,8 @@ export function Navbar({ onStart }: { onStart?: () => void }) {
 }
 
 // -----------------------------
-// Hero
+// Hero con dashboard realista
 // -----------------------------
-
 function Hero({ onCreate }: { onCreate?: () => void }) {
   return (
     <section id="inicio" className="pt-24">
@@ -128,28 +113,36 @@ function Hero({ onCreate }: { onCreate?: () => void }) {
           </div>
         </div>
 
+        {/* Dashboard animado */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative"
+          transition={{ duration: 0.8 }}
+          className="relative flex justify-center"
         >
-          <div className="w-full aspect-video rounded-2xl shadow-xl overflow-hidden bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
-            <div className="p-8">
-              <div className="h-full flex flex-col gap-4">
-                <div className="flex items-center justify-between">
-                  <div className="w-48 h-6 rounded-lg bg-slate-200/60" />
-                  <div className="w-24 h-6 rounded-lg bg-slate-200/60" />
+          <div className="relative w-full max-w-lg">
+            <motion.div
+              animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl blur-lg opacity-40"
+            />
+            <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-white dark:bg-slate-900">
+              <div className="bg-slate-100 dark:bg-slate-800 p-2 flex justify-between items-center">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-400" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                  <div className="w-3 h-3 rounded-full bg-green-400" />
                 </div>
-                <div className="flex-1 grid grid-cols-3 gap-4">
-                  <div className="col-span-2 bg-white/70 rounded-lg p-4 shadow-inner">
-                    Dashboard preview
-                  </div>
-                  <div className="bg-white/70 rounded-lg p-4 shadow-inner">
-                    Orders
-                  </div>
-                </div>
-                <div className="h-12 bg-slate-100 rounded-lg" />
+                <div className="text-xs text-slate-500">TEX</div>
+              </div>
+              <div className="relative w-full aspect-video bg-slate-50 dark:bg-slate-900">
+                <Image
+                  src="/images/banner.jpg"
+                  alt="TEX Dashboard Preview"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -160,49 +153,34 @@ function Hero({ onCreate }: { onCreate?: () => void }) {
 }
 
 // -----------------------------
-// Benefits
+// Beneficios
 // -----------------------------
+function Benefits() {
+  const features = [
+    { icon: ShoppingCart, title: "Tu tienda en minutos", text: "Configura tu catálogo y empieza a vender sin complicaciones." },
+    { icon: Server, title: "Gestión inteligente", text: "Organiza tus productos y obtén analíticas en tiempo real." },
+    { icon: Globe, title: "Distribución internacional", text: "Vende fácilmente en Colombia y Estados Unidos." },
+    { icon: Lock, title: "Pagos seguros", text: "Protegemos tus transacciones y la información de tus clientes." },
+  ]
 
-const benefits = [
-  { title: "Tu tienda en minutos", icon: ShoppingCart, desc: "Plantillas y onboarding rápido." },
-  { title: "Gestión inteligente de productos", icon: Server, desc: "SKU, variantes y stock centralizado." },
-  { title: "Distribución internacional", icon: Globe, desc: "Logística y aduanas integradas." },
-  { title: "Pagos seguros y transparentes", icon: Lock, desc: "Pasarelas en COP y USD." },
-  { title: "Analíticas accionables", icon: Star, desc: "Panel con métricas comerciales." },
-  { title: "Soporte y crecimiento", icon: User, desc: "Soporte por expertos y onboarding pro." },
-]
-
-function BenefitCard({ title, desc, Icon }: { title: string; desc: string; Icon: any }) {
   return (
-    <motion.div
-      whileHover={{ y: -6 }}
-      className="bg-white/60 dark:bg-slate-900/60 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800"
-    >
-      <div className="flex items-start gap-4">
-        <div className="p-3 rounded-xl bg-gradient-to-r from-blue-50 to-violet-50">
-          <Icon className="w-6 h-6 text-slate-700" />
-        </div>
-        <div>
-          <h4 className="font-semibold">{title}</h4>
-          <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">{desc}</p>
-        </div>
-      </div>
-    </motion.div>
-  )
-}
-
-export function Benefits() {
-  return (
-    <section id="features" className="py-12">
-      <div className="max-w-7xl mx-auto px-6">
-        <h3 className="text-2xl font-bold">Beneficios que impulsan ventas</h3>
-        <p className="text-slate-600 mt-2 max-w-2xl">
-          Herramientas pensadas para que conviertas más y administres sin fricción.
-        </p>
-
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {benefits.map((b) => (
-            <BenefitCard key={b.title} title={b.title} desc={b.desc} Icon={b.icon} />
+    <section id="features" className="py-24 bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-800">
+      <div className="max-w-6xl mx-auto px-6 text-center">
+        <h2 className="text-3xl font-bold mb-12">
+          <GradientText>Todo lo que necesitas para crecer</GradientText>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {features.map((f, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+              className="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm"
+            >
+              <f.icon className="w-10 h-10 mx-auto text-blue-600 mb-4" />
+              <h3 className="font-semibold mb-2">{f.title}</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400">{f.text}</p>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -211,113 +189,62 @@ export function Benefits() {
 }
 
 // -----------------------------
-// Pricing Section
+// Pricing
 // -----------------------------
-
-interface PricingPlan {
-  id: string
-  name: string
-  priceUSD: number
-  priceCOP: number
-  features: string[]
-  highlight?: boolean
-}
-
-const PLANS: PricingPlan[] = [
-  {
-    id: "free",
-    name: "Free",
-    priceUSD: 0,
-    priceCOP: 0,
-    features: ["Tienda básica", "10 productos", "Soporte community"],
-  },
-  {
-    id: "pro",
-    name: "Pro",
-    priceUSD: 29,
-    priceCOP: 120000,
-    features: ["Productos ilimitados", "Analíticas", "Branding personalizado"],
-    highlight: true,
-  },
-  {
-    id: "enterprise",
-    name: "Enterprise",
-    priceUSD: 199,
-    priceCOP: 820000,
-    features: ["Soporte dedicado", "API y SLAs", "Integraciones personalizadas"],
-  },
-]
-
-export function PricingSection() {
-  const [currency, setCurrency] = React.useState<Currency>("USD")
-
-  const price = (plan: PricingPlan) =>
-    currency === "USD"
-      ? `$${plan.priceUSD}`
-      : `COP ${plan.priceCOP.toLocaleString()}`
+function PricingSection() {
+  const plans = [
+    {
+      title: "Free",
+      price: "0",
+      description: "Funciones básicas para comenzar.",
+      features: ["Catálogo limitado", "Soporte por correo", "Hasta 10 productos"],
+    },
+    {
+      title: "Pro",
+      price: "29",
+      description: "Para emprendedores activos.",
+      features: ["Analíticas avanzadas", "Branding personalizado", "Soporte prioritario"],
+    },
+    {
+      title: "Enterprise",
+      price: "99",
+      description: "Para marcas consolidadas.",
+      features: ["API dedicada", "Soporte 24/7", "Integraciones premium"],
+    },
+  ]
 
   return (
-    <section id="planes" className="py-16">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-3xl font-bold">Planes hechos para crecer contigo.</h2>
-            <p className="text-slate-600 mt-2">
-              Escoge el plan ideal para tu negocio, sin comisiones ocultas.
-            </p>
-          </div>
+    <section id="planes" className="py-24">
+      <div className="max-w-6xl mx-auto px-6 text-center">
+        <h2 className="text-3xl font-bold mb-4">
+          <GradientText>Planes hechos para crecer contigo</GradientText>
+        </h2>
+        <p className="text-slate-600 dark:text-slate-400 mb-12">
+          Escoge el plan ideal para tu negocio, sin comisiones ocultas.
+        </p>
 
-          <div className="flex items-center gap-4">
-            <div className="text-sm">Moneda</div>
-            <div className="flex gap-2 items-center">
-              <button
-                onClick={() => setCurrency("USD")}
-                className={`px-3 py-1 rounded-full ${currency === "USD" ? "bg-slate-100" : ""}`}
-              >
-                USD
-              </button>
-              <button
-                onClick={() => setCurrency("COP")}
-                className={`px-3 py-1 rounded-full ${currency === "COP" ? "bg-slate-100" : ""}`}
-              >
-                COP
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {PLANS.map((plan) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {plans.map((p, i) => (
             <motion.div
-              whileHover={{ scale: 1.03 }}
-              key={plan.id}
-              className={`rounded-2xl p-6 border ${
-                plan.highlight ? "border-violet-500 shadow-lg" : "border-slate-200"
-              } bg-white/60 dark:bg-slate-900/60`}
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
             >
-              <Card>
+              <Card className="rounded-2xl shadow-md border-slate-200 dark:border-slate-700">
                 <CardHeader>
-                  <CardTitle className="flex items-center justify-between">
-                    <div>
-                      <div className="text-lg font-semibold">{plan.name}</div>
-                      <div className="text-sm text-slate-500">{price(plan)} / mes</div>
-                    </div>
-                    {plan.highlight && (
-                      <div className="text-xs px-2 py-1 rounded-full bg-violet-100 text-violet-700">
-                        Popular
-                      </div>
-                    )}
-                  </CardTitle>
+                  <CardTitle className="text-xl font-bold">{p.title}</CardTitle>
+                  <p className="text-sm text-slate-500">{p.description}</p>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-2 mb-4">
-                    {plan.features.map((f) => (
-                      <li key={f} className="flex items-center gap-3 text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500" /> {f}
-                      </li>
+                  <div className="text-4xl font-bold mb-4">${p.price}</div>
+                  <ul className="mb-6 text-sm text-slate-600 dark:text-slate-400 space-y-2">
+                    {p.features.map((f, idx) => (
+                      <li key={idx}>• {f}</li>
                     ))}
                   </ul>
-                  <Button className="w-full rounded-2xl">Comenzar con este plan</Button>
+                  <Button className="w-full rounded-2xl bg-gradient-to-r from-blue-600 to-violet-600 text-white">
+                    Comenzar con este plan
+                  </Button>
                 </CardContent>
               </Card>
             </motion.div>
@@ -329,118 +256,93 @@ export function PricingSection() {
 }
 
 // -----------------------------
-// Testimonials
+// Testimonios
 // -----------------------------
-
-const TESTIMONIALS = [
-  { name: "María G.", role: "Emprendedora", text: "Duplicamos nuestras ventas en 2 meses gracias a TEX." },
-  { name: "Carlos P.", role: "TI", text: "Integración sencilla y soporte rápido." },
-  { name: "Luisa R.", role: "Marca", text: "Llegamos a clientes en EE. UU. sin dolores de cabeza." },
-]
-
-export function Testimonials() {
-  const [index, setIndex] = React.useState(0)
-
-  React.useEffect(() => {
-    const t = setInterval(() => setIndex((i) => (i + 1) % TESTIMONIALS.length), 5000)
-    return () => clearInterval(t)
-  }, [])
-
-  const current = TESTIMONIALS[index]
+function Testimonials() {
+  const users = [
+    {
+      name: "María Torres",
+      text: "Duplicamos nuestras ventas en 2 meses gracias a TEX.",
+    },
+    {
+      name: "Carlos Gómez",
+      text: "La gestión de productos nunca fue tan fácil.",
+    },
+    {
+      name: "Lucía Martínez",
+      text: "Excelente soporte y plataforma muy estable.",
+    },
+  ]
 
   return (
-    <section className="py-12">
-      <div className="max-w-5xl mx-auto px-6">
-        <h3 className="text-2xl font-bold">Lo que dicen nuestros usuarios</h3>
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mt-6"
-        >
-          <Card className="rounded-2xl">
-            <CardContent className="flex gap-4 items-center">
-              <Avatar>
-                <div className="rounded-full bg-slate-200 w-10 h-10 flex items-center justify-center">
-                  {current.name[0]}
-                </div>
-              </Avatar>
-              <div>
-                <div className="font-semibold">
-                  {current.name}{" "}
-                  <span className="text-sm text-slate-500">· {current.role}</span>
-                </div>
-                <div className="text-slate-600 mt-1">{current.text}</div>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </div>
-    </section>
-  )
-}
-
-// -----------------------------
-// Final CTA + Footer
-// -----------------------------
-
-export function FinalCTA() {
-  return (
-    <section className="py-12 mt-8 bg-gradient-to-r from-blue-600 to-violet-600 rounded-2xl mx-6 md:mx-auto md:max-w-7xl p-8 text-white">
-      <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
-          <h3 className="text-2xl font-bold">Crea tu cuenta y comienza a vender hoy mismo.</h3>
-          <p className="mt-2 text-slate-100/90">
-            Sin complicaciones. Sin comisiones ocultas. Solo ventas.
-          </p>
-        </div>
-        <div>
-          <Button className="rounded-2xl bg-white text-blue-700">
-            Registrarme en TEX
-          </Button>
+    <section className="py-24 bg-slate-50 dark:bg-slate-900">
+      <div className="max-w-5xl mx-auto px-6 text-center">
+        <h2 className="text-3xl font-bold mb-12">
+          <GradientText>Lo que dicen nuestros usuarios</GradientText>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {users.map((u, i) => (
+            <Card key={i} className="rounded-2xl p-6 shadow-sm">
+              <CardContent>
+                <Avatar className="mx-auto mb-4" />
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">{u.text}</p>
+                <div className="font-semibold">{u.name}</div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
   )
 }
 
-export function Footer() {
+// -----------------------------
+// CTA Final
+// -----------------------------
+function FinalCTA() {
   return (
-    <footer className="mt-12 py-8 text-sm text-slate-600 dark:text-slate-300">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div>© 2025 TEX. Todos los derechos reservados.</div>
-        <div className="flex gap-4">
-          <a href="#">Soporte</a>
-          <a href="#">Términos</a>
-          <a href="#">Política de privacidad</a>
-        </div>
+    <section className="py-24 bg-gradient-to-r from-blue-600 to-violet-600 text-center text-white">
+      <h2 className="text-3xl font-bold mb-4">Crea tu cuenta y comienza a vender hoy mismo</h2>
+      <Button size="lg" className="bg-white text-blue-600 rounded-2xl font-semibold">
+        Registrarme en TEX
+      </Button>
+    </section>
+  )
+}
+
+// -----------------------------
+// Footer
+// -----------------------------
+function Footer() {
+  return (
+    <footer className="py-10 text-center text-sm text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800">
+      <div className="flex flex-col md:flex-row justify-center gap-6 mb-4">
+        <a href="#">Soporte</a>
+        <a href="#">Términos</a>
+        <a href="#">Política de privacidad</a>
       </div>
+      <p>© 2025 TEX. Todos los derechos reservados.</p>
     </footer>
   )
 }
 
 // -----------------------------
-// Main Composition
+// Página principal
 // -----------------------------
-
 export default function ClientPricingPage() {
   const handleStart = () => console.log("Comenzar flujo de registro")
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-800 text-slate-900 dark:text-slate-100">
       <Navbar onStart={handleStart} />
-
       <main className="pt-20">
         <Hero onCreate={handleStart} />
         <Benefits />
         <PricingSection />
         <Testimonials />
-        <div className="max-w-7xl mx-auto px-6">
-          <FinalCTA />
-          <Footer />
-        </div>
+        <FinalCTA />
       </main>
+      <Footer />
     </div>
   )
 }
