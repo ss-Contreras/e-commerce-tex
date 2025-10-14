@@ -1,18 +1,11 @@
-import { ReactNode } from 'react';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { ClientLayoutWrapper } from '@/components/Client-layout-wrapper';
+"use client"
 
-export default function MainLayout({ children }: { children: ReactNode }) {
+import React from "react"
+
+export function ClientLayoutWrapper({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <Header />
-      <ClientLayoutWrapper>
-        <main className="flex-1 p-4 sm:p-8 overflow-auto">
-          {children}
-        </main>
-      </ClientLayoutWrapper>
-      <Footer />
-    </>
-  );
+    <div className="min-h-screen flex flex-col bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+      {children}
+    </div>
+  )
 }
